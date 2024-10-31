@@ -1,0 +1,93 @@
+Versionamento Semântico
+	Major: Alterações que quebram a compatibilidade ou reestruturam a lógica.
+	Minor: Novas funcionalidades adicionadas, mas que não afetam a estrutura geral.
+	Patch: Correções de bugs e pequenas melhorias.
+
+* Por exemplo, se a primeira versão for 1.0.0 e você adicionar novas funcionalidades sem quebrar a compatibilidade, a próxima versão seria 1.1.0. Se fizer apenas correções, seria 1.0.1.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+versão 1.0.0 - 30/09
+Primeira versão do projeto concluída, com uma estrutura inicial ainda em desenvolvimento.
+Adicionada a integração com Node.js ao projeto, que anteriormente utilizava apenas HTML, CSS e JavaScript.
+Implementado um sistema de conexão com o banco de dados para carregar os dados em uma tabela gerada dinamicamente via JavaScript.
+
+Versão 2.0.0 - 03/10
+Primeira grande reestruturação do código para melhorar o desempenho e a usabilidade.
+Implementada paginação dinâmica que exibe apenas 10 registros por vez, evitando carregar todos os produtos de uma só vez (o que poderia causar lentidão significativa em casos de lojas com mais de 500 produtos).
+Adicionado um sistema de mapeamento de páginas:
+	Quando há muitas páginas (e.g., 80 páginas) e o usuário está em uma posição intermediária (e.g., 5ª página), a navegação é ajustada para exibir apenas um intervalo limitado ao redor da página atual.
+	Por exemplo, ao navegar na 5ª página, o sistema mostra ... 3, 4, 5, 6, 7 ..., ocultando páginas que não são relevantes no momento e evitando sobrecarregar a visualização com todos os números.
+
+Versão 2.1.0 - 05/10
+Corrigida a posição dos botões do menu superior para garantir que fiquem alinhados com os campos de entrada e o seletor de valor do filtro.
+Implementado um sistema básico e funcional de filtro, permitindo seleções para Fornecedor, Código do Produto e Nome.
+Adicionado um dropdown para selecionar o valor do filtro, proporcionando uma experiência de uso mais intuitiva.
+Adicionado um sistema de correção para o pronome do placeholder dos filtros, garantindo que a instrução fique gramaticalmente correta. Anteriormente, ao selecionar a data, o placeholder exibia 'Digite o data de validade do produto procurado'. Agora, a mensagem correta é 'Digite a data de validade do produto procurado'.
+
+Versão 3.0.0 - 06/10
+Filtro incrementado: agora abrange todas as opções, incluindo Fornecedor, Código do Produto, Nome, Quantidade e Data de Validade.
+Adicionadas iniciais nos menus superiores, melhorando a estética e facilitando a identificação de cada botão do menu.
+Realizada a correção gramatical do texto para a opção Quantidade.
+Implementado um sistema que converte a entrada do usuário ao selecionar Quantidade, corrigindo automaticamente valores como "5,5" para "5.5" e tratando esses valores corretamente no filtro.
+Criado um sistema que permite ao usuário utilizar condições lógicas no filtro de Quantidade. Por exemplo, a entrada "<10" mostrará todos os registros com menos de 10 unidades.
+Desenvolvido um sistema de filtro para Data altamente funcional, permitindo que o usuário escolha filtrar por dia, mês ou ano utilizando separadores "/". Exemplos:
+	"23/5/2024": filtra produtos que vencem exatamente nessa data.
+	"/5/2025": filtra produtos que vencem em maio de 2025.
+	"//2025": filtra todos os produtos que vencem em 2025.
+	"15//": filtra todos os produtos que vencem no dia 15, independentemente do mês ou ano.
+	"/5/": filtra produtos que vencem em maio, independentemente do dia ou ano.
+	"N/A": filtra todos os produtos sem data de vencimento.
+
+Versão 3.1.0 - 07/10
+Criado um changelog para registrar todas as alterações, facilitando a documentação do projeto.
+Implementado um sistema de seleção de linhas dos produtos, permitindo que elas fiquem com uma cor de destaque para fácil identificação.
+Criado um sistema de filtro para o Código do Produto, que identifica duas situações:
+	Intervalo de códigos: Se o usuário digitar "2,4", retorna os produtos com códigos de 2 a 4. O sistema converte automaticamente "2.4" para "2,4" para que o filtro funcione corretamente. 
+		Também foi implementada uma correção para inverter a entrada incorreta, de "4,2" para "2,4", evitando falhas no filtro.
+	Múltiplos valores: Se o usuário digitar mais de dois códigos separados por vírgulas, como "1, 5, 6, 13", o sistema pesquisa e lista todos os materiais correspondentes.
+	Bug detectado: Não está retornando valores ao digitar "4,11" nem "4,10".
+Melhorada a funcionalidade do sistema de data de validade, adicionando uma nova função de filtro onde, ao digitar "<30", o sistema retorna todos os produtos que vão vencer em até 30 dias.
+Aprimorada a funcionalidade geral do filtro, fazendo com que, quando não houver um valor do usuário, o sistema retorne a lista completa.
+
+Versão 3.1.1 - 07/10
+Correção de Bug: 
+	Resolvido o problema no filtro de "Código do Produto" que ocorria quando o primeiro valor não era reconhecido como número ao lado de um segundo valor com duas casas decimais (ex: "4,11" ou "4,10"), causando conflito e impedindo a filtragem correta.
+Melhoria: 
+	Sistema de filtro ajustado e concluído.
+
+Versão 3.2.0 - 08/10
+Funcionalidade Adicionada: 
+	Implementada a função de adicionar novos produtos ao sistema.
+Interface: 
+	Criado um painel visual no front-end para a nova funcionalidade de cadastro de produtos.
+Feedback ao Usuário: 
+	Desenvolvida a tela de "Mercadoria Cadastrada" como confirmação visual após a conclusão do cadastro de novos produtos.
+
+Versão 3.3.0 - 09/10
+Funcionalidade Adicionada:
+	Implementada a funcionalidade de adicionar mercadorias em massa através de uma planilha. A planilha deve seguir um modelo de padronização específico para garantir a correta inclusão dos dados no sistema.
+Interface:
+	Adicionado um marcador de navegação que destaca a página atual para facilitar a visualização e melhorar a experiência do usuário.
+
+Versão 3.4.0 - 09/10
+Interface:
+	Implementada a interface de edição de mercadorias.
+Funcionalidade: 
+	Adicionada a funcionalidade para carregar os dados da primeira mercadoria selecionada.
+Lógica de Atualização: 
+	Iniciada a implementação de uma lógica para executar a query de UPDATE no banco de dados quando uma linha ou mais forem alteradas.
+
+Versão 3.5.0 - 10/10
+Correção de Bug:
+	Corrigido o bug onde, ao realizar uma pesquisa com filtro estando na página 3, e o resultado possuir apenas uma página, o marcador de página permanecia na página 3.
+Funcionalidade Adicionada:
+	Implementada a funcionalidade de edição de mercadoria única.
+Interface:
+	Adicionada uma tela de erro que solicita ao usuário selecionar pelo menos uma mercadoria antes de tentar editar.
+
+versão ? - 11/10
+Começei a desenvolver o menu de edição de mercadoria em massa, mas ainda falta terminar
+
+	
+

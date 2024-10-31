@@ -1,0 +1,384 @@
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #f5f5f5;
+}
+
+.container {
+    width: 80%;
+    margin: 18px auto;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    width: 290px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    padding: 10px;
+    display: block;
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.dropdown-item:hover {
+    background-color: #eee;
+    border-radius: 25px;
+}
+
+#dropdownButton {
+    width: 30%;
+    text-align: center;
+    cursor: pointer;
+}
+
+input[type="text"] {
+    width: calc(100% - 60px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.action-buttons .button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+
+.button.green { 
+    background-color: #c1ff72;
+    color: #7ed957;
+}
+
+.button.blue { 
+    background-color: #5ce1e6; 
+    color: #0cc0df;
+}
+
+.button.gray { 
+    background-color: #737373;
+    color: #545454; 
+}
+
+.button.red { 
+    background-color: #ef4136; 
+    color: #b52e28;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+.product-image {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.product-checkbox {
+    display: none;
+}
+
+.selected-product {
+    background-color: rgba(232, 247, 252, 0.5);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.pagination.button {
+    border: none;
+    background: none;
+    color: lightslategray;
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 16px;
+}
+
+.pagination.button:hover {
+    color: lightslategray;
+    text-decoration: none;
+}
+
+.pagination.button:active {
+    color: lightslategray;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.addProductPopup {
+    width: 500px;
+    height: 500px;
+    background-color: rgba(193, 255, 114, 1);
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.addProductPopup::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    background-image: url('imgs/plus-addition-symbol-sign-png.png');
+    background-repeat: no-repeat;
+    background-position: 230px 180px;
+    background-size: 300px 300px;
+    transform: rotate(20deg);
+    opacity: 0.1; 
+    z-index: -1; 
+}
+
+.addProductPopup h1, h2 {
+    margin: 0px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+.addProductPopup h1 {
+    margin: 0px;
+    margin-top: 10px;
+}
+
+.addProductPopup h2 {
+    font-weight: lighter;
+    margin-bottom: 10px;
+}
+
+.addProductPopup .links-container a {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 0px 10px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.editProductPopup {
+    width: 500px;
+    height: 500px;
+    background-color: rgba(92, 255, 230, 1);
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.editProductPopup::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    background-image: url('imgs/edit-files-icon.png');
+    background-repeat: no-repeat;
+    background-position: 270px 170px;
+    background-size: 290px 290px;
+    transform: rotate(20deg);
+    opacity: 0.1; 
+    z-index: -1; 
+}
+
+.editProductPopup h1, h2 {
+    margin: 0px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+.editProductPopup h1 {
+    margin: 0px;
+    margin-top: 10px;
+}
+
+.editProductPopup h2 {
+    font-weight: lighter;
+    margin-bottom: 10px;
+}
+
+.editProductPopup .links-container a {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 0px 10px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.input-group {
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group label {
+    position: absolute;
+    top: -15px;
+    left: 90px;
+    padding: 0 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.input-group input {
+    width: calc(80% - 60px);
+    padding: 10px;
+    margin: 0px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    outline: none;
+}
+
+
+.editRemove {
+    width: 500px;
+    height: 500px;
+    background-color: #ef4136;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.editRemove::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    background-image: url('imgs/dustbin_11821406.png');
+    background-repeat: no-repeat;
+    background-position: 230px 180px;
+    background-size: 300px 300px;
+    transform: rotate(20deg);
+    opacity: 0.1; 
+    z-index: -1; 
+}
+
+.negativadosPopup {
+    width: 400px;
+    background-color: gray;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
